@@ -1,0 +1,160 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Create Plan in Planner",
+    "description": "Create Plan in Planner",
+    "version": "1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/v1.0/planner/plans": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "createdBy": {
+                  "type": "object",
+                  "properties": {
+                    "application": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "ID of application that created plan",
+                          "title": "Application ID",
+                          "x-ms-visibility": null
+                        }
+                      },
+                      "description": "application"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "ID of a user that created plan",
+                          "title": "User ID",
+                          "x-ms-visibility": null
+                        }
+                      },
+                      "description": "user"
+                    }
+                  },
+                  "description": "createdBy"
+                },
+                "createdDateTime": {
+                  "type": "string",
+                  "description": "Date and time plan was created",
+                  "title": "Created Date and Time",
+                  "x-ms-visibility": null
+                },
+                "owner": {
+                  "type": "string",
+                  "description": "Office 365 group that this plan is part of",
+                  "title": "Plan Owner",
+                  "x-ms-visibility": null
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Title of a plan",
+                  "title": "Plan Title",
+                  "x-ms-visibility": null
+                },
+                "id": {
+                  "type": "string",
+                  "description": "ID of a plan",
+                  "title": "Plan ID",
+                  "x-ms-visibility": null
+                }
+              }
+            },
+            "headers": {
+              "HTTP/1.1": {
+                "description": "HTTP/1.1",
+                "type": "string"
+              },
+              "Content-type:": {
+                "description": "Content-type",
+                "type": "string"
+              },
+              "Content-length:": {
+                "description": "Content-length",
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "operationId": "createmuprojectplan",
+        "summary": "Create Plan",
+        "description": "Create plan",
+        "parameters": [
+          {
+            "name": "Content-type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "owner": {
+                  "type": "string",
+                  "description": "Group ID (GUID) that will be used for project owner",
+                  "title": "Project owner (Group ID)",
+                  "x-ms-visibility": null
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Plan name that will be displayed",
+                  "title": "Plan name",
+                  "x-ms-visibility": null
+                }
+              },
+              "required": [
+                "owner",
+                "title"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth2_auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://login.windows.net/common/oauth2/authorize",
+      "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+      "scopes": {
+        "Group.ReadWrite.All": "Group.ReadWrite.All"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2_auth": [
+        "Group.ReadWrite.All"
+      ]
+    }
+  ],
+  "tags": []
+}   
